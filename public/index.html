@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWT Studio</title> <meta name="theme-color" content="#2d3748"/>
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados podem ser adicionados aqui, se necessário */
+        body {
+            font-family: 'Inter', sans-serif; /* Usando Inter como fonte padrão */
+        }
+        /* Ajustes para o modo escuro do Tailwind */
+        .dark .bg-gray-100 { background-color: #1a202c; } /* dark:bg-gray-900 */
+        .dark .text-gray-900 { color: #e2e8f0; } /* dark:text-gray-100 */
+        .dark .bg-white { background-color: #2d3748; } /* dark:bg-gray-800 */
+        .dark .text-gray-800 { color: #cbd5e0; } /* dark:text-gray-200 */
+        .dark .bg-gray-200 { background-color: #4a5568; } /* dark:bg-gray-700 */
+        .dark .bg-gray-300 { background-color: #4a5568; } /* dark:bg-gray-700 */
+        .dark .border-gray-300 { border-color: #4a5568; } /* dark:border-gray-600 */
+        .dark .placeholder-gray-400::placeholder { color: #a0aec0; } /* dark:placeholder-gray-500 */
+
+        /* Estilos para o Tailwind Prose - para o conteúdo de texto */
+        .prose {
+            max-width: 80ch;
+        }
+        .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+            color: #1a202c; /* default light mode heading color */
+        }
+        .prose p {
+            color: #4a5568; /* default light mode paragraph color */
+        }
+        .prose ul, .prose ol {
+            color: #4a5568; /* default light mode list item color */
+        }
+        .prose strong {
+            color: #2d3748; /* default light mode strong color */
+        }
+
+        /* Dark mode adjustments for prose */
+        .dark .prose h1, .dark .prose h2, .dark .prose h3, .dark .prose h4, .dark .prose h5, .dark .prose h6 {
+            color: #e2e8f0; /* dark mode heading color */
+        }
+        .dark .prose p {
+            color: #a0aec0; /* dark mode paragraph color */
+        }
+        .dark .prose ul, .dark .prose ol {
+            color: #a0aec0; /* dark mode list item color */
+        }
+        .dark .prose strong {
+            color: #cbd5e0; /* dark mode strong color */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-300">
+    <div id="root" class="flex-grow flex flex-col"></div>
+
+    <script type="text/babel" data-presets="env,react">
+        // Importa os componentes React e utilitários
+        import React, { useState, useEffect, useCallback } from 'react';
+        import ReactDOM from 'react-dom/client';
+
+        // Importa os arquivos JavaScript de componentes
+        import JwtDecoder from './JwtDecoder.jsx';
+        import SignatureValidator from './SignatureValidator.jsx';
+        import JwtGenerator from './JwtGenerator.jsx';
+        import { appFeaturesContent } from './appFeatures.js';
+        import { jwtConceptsContent } from './jwtConcepts.js';
+        import { projectStoryContent } from './projectStory.js';
+
+        // Importa os componentes de UI de Shadcn/Radix UI (assumindo que você os copiou para 'ui' folder)
+        import { Button, Input, Textarea, Select, SelectTrigger, SelectContent, SelectItem, SelectValue, Alert, AlertTitle, AlertDescription } from './ui/index.js';
+        import { TerminalIcon, KeyRoundIcon, AlertCircleIcon, CheckCircleIcon, SignatureIcon } from './Icons.jsx'; // Certifique-se de que Icons.jsx existe
+
+        // Assume que jwtUtils.js está no diretório 'utils'
+        import { base64urlDecode, base64urlEncode, parseJSON, formatJSON, sign, verifySignature } from './utils/jwtUtils.js';
+
+        // Assume que cn.js é um utilitário para className do Tailwind
+        import { cn } from './utils/cn.js'; // Adicionei a importação para 'cn'
+
+        // Componente Tabs básico para navegação entre seções
+        const Tabs = ({ children, initialTab = 'decoder' }) => {
+            const [activeTab, setActiveTab] = useState(initialTab);
+
+            return (
+                <div>
+                    <div className="flex border-b border-gray-200 dark:border-gray-700 mb-6 flex-wrap">
+                        {React.Children.map(children, child => (
+                            <button
+                                key={child.props.id}
+                                className={`py-2 px-4 -mb-px border-b-2 font-medium text-sm focus:outline-none ${
+                                    activeTab === child.props.id
+                                        ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:border-gray-500'
+                                }`}
+                                onClick={() => setActiveTab(child.props.id)}
+                            >
+                                {child.props.title}
+                            </button>
+                        ))}
+                    </div>
+                    <div>
+                        {React.Children.map(children, child =>
+                            activeTab === child.props.id ? child : null
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        const TabContent = ({ id, title, children }) => {
+            return <div id={id}>{children}</div>;
+        };
+
+        // Componente principal da aplicação
+        const App = () => {
+            const [darkMode, setDarkMode] = useState(() => {
+                // Lê a preferência do usuário ou do sistema
+                if (typeof window !== 'undefined') {
+                    if (localStorage.getItem('theme') === 'dark') return true;
+                    if (localStorage.getItem('theme') === 'light') return false;
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+                }
+                return false; // Padrão para light se não houver window
+            });
+
+            useEffect(() => {
+                if (darkMode) {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+            }, [darkMode]);
+
+            const toggleDarkMode = () => {
+                setDarkMode(!darkMode);
+            };
+
+            // ** REGISTRO DO SERVICE WORKER **
+            // Isso precisa ser executado quando o DOM estiver pronto
+            useEffect(() => {
+                if ('serviceWorker' in navigator) {
+                    window.addEventListener('load', () => {
+                        // Caminho relativo ao root do servidor.
+                        // Se o index.html está na raiz, o service-worker.js também deve estar.
+                        navigator.serviceWorker.register('./service-worker.js')
+                            .then(registration => {
+                                console.log('Service Worker registrado com sucesso:', registration);
+                            })
+                            .catch(error => {
+                                console.log('Falha ao registrar o Service Worker:', error);
+                            });
+                    });
+                }
+            }, []); // Rodar apenas uma vez no mount
+
+            return (
+                <div className="flex-grow flex flex-col">
+                    <button
+                        onClick={toggleDarkMode}
+                        className="fixed top-4 right-4 p-2 bg-gray-300 dark:bg-gray-700 rounded-md shadow-md z-10 text-gray-800 dark:text-gray-200"
+                    >
+                        {darkMode ? 'Light Mode' : 'Dark Mode'}
+                    </button>
+                    <header className="py-6 bg-white dark:bg-gray-800 shadow-md">
+                        <div className="container mx-auto px-4">
+                            <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 flex items-center justify-center gap-2">
+                                JWT Studio <span className="text-blue-500">Aprimorado</span>
+                            </h1>
+                        </div>
+                    </header>
+                    <main className="container mx-auto py-8 px-4 flex-grow">
+                        <Tabs initialTab="decoder">
+                            <TabContent id="decoder" title="Decodificador">
+                                <JwtDecoder />
+                            </TabContent>
+                            <TabContent id="generator" title="Gerador">
+                                <JwtGenerator />
+                            </TabContent>
+                            <TabContent id="validator" title="Validador">
+                                <SignatureValidator />
+                            </TabContent>
+                            <TabContent id="features" title="Funcionalidades">
+                                {appFeaturesContent}
+                            </TabContent>
+                            <TabContent id="concepts" title="Conceitos JWT/Base64">
+                                {jwtConceptsContent}
+                            </TabContent>
+                            <TabContent id="story" title="História do Projeto">
+                                {projectStoryContent}
+                            </TabContent>
+                        </Tabs>
+                    </main>
+                    <footer className="py-4 text-center text-gray-500 dark:text-gray-400">
+                        Desenvolvido para fins educacionais e internos © 2025 Edison Vargas Teixeira. Todos os direitos reservados.
+                    </footer>
+                </div>
+            );
+        };
+
+        // Renderiza o componente principal da aplicação no elemento com id 'root'
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
