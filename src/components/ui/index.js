@@ -20,7 +20,7 @@ export const Input = ({ id, type, className, value, onChange, placeholder }) => 
 export const Textarea = ({ id, className, value, onChange, placeholder, readOnly }) => (
     <textarea
         id={id}
-        className={`shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 dark:bg-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent min-h-[100px] ${className}`}
+        className={`shadow border rounded-md w-full py-2 px-3 bg-gray-800 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent min-h-[100px] font-mono ${className}`}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
