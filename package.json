@@ -4,15 +4,15 @@
   "description": "Ambiente técnico para geração, validação e decodificação de JWTs e Base64 — codifique, explore e aprenda com segurança.",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack serve --open",
-    "build": "webpack --mode production",
-    "predeploy": "npm run biuld",
-    "deploy": "gh-pages -d dist"
+  "start": "webpack serve --open",
+  "build": "webpack --mode production",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://Edison-Vargas.github.io/JWT_Studio.git",
+  "homepage": "https://Edison-Vargas.github.io/encodlab-studio/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Edison-Vargas/JWT_Studio.git"
+    "url": "https://github.com/Edison-Vargas/encodlab-studio"
   },
   "keywords": [
     "jwt",

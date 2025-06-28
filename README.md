@@ -6,9 +6,11 @@
 
 ---
 
-## 📌 Sobre o Projeto
+## 🚀 Sobre o Projeto
 
-O **EncodLab Studio** é uma plataforma interativa e modular para desenvolvedores, estudantes e entusiastas de segurança explorarem estruturas de autenticação e codificação, como **JWT** (JSON Web Tokens) e **Base64**. Criada com **React**, empacotada com **Webpack** e hospedada via **GitHub Pages**, a aplicação roda totalmente no navegador — sem backend, sem cookies, com foco total em privacidade e aprendizado técnico.
+O EncodLab Studio é uma plataforma web inovadora, desenhada para desenvolvedores, estudantes e entusiastas de segurança que desejam aprofundar os seus conhecimentos em estruturas de autenticação e codificação, como JWT (JSON Web Tokens) e Base64.
+
+Desenvolvida com React, otimizada com Webpack e alojada de forma eficiente via GitHub Pages, esta aplicação corre integralmente no navegador. A sua arquitetura client-side garante privacidade total, eliminando a necessidade de backends ou o uso de cookies, focando numa experiência técnica refinada e segura.
 
 ---
 
@@ -56,90 +58,62 @@ O **EncodLab Studio** é uma plataforma interativa e modular para desenvolvedore
 
 ---
 
-## 📁 Estrutura de Pastas (Essencial)
+⚙️ Como Executar Localmente
 
-/ (Raiz do Projeto)
-|
-|-- 📂 src/
-|   |
-|   |-- 📄 index.js             (Ponto de entrada do React, renderiza o App)
-|   |-- 📄 App.jsx               (Componente principal, orquestra a aplicação)
-|   |
-|   |-- 📂 assets/
-|   |   |-- styles.css          (Estilos globais da aplicação)
-|   |
-|   |-- 📂 components/
-|   |   |
-|   |   |-- 📄 JwtDecoder.jsx         (Componente: Decodificador de JWT)
-|   |   |-- 📄 JwtGenerator.jsx        (Componente: Gerador de JWT)
-|   |   |-- 📄 SignatureValidator.jsx (Componente: Validador de Assinatura)
-|   |   |-- 📄 Base64Converter.jsx     (Componente: Ferramenta de conversão)
-|   |   |-- 📄 ToggleDarkMode.jsx    (Componente: Botão de modo escuro)
-|   |   |
-|   |   `-- 📂 ui/
-|   |       |-- Modal.jsx             (Componente de UI reutilizável: Modal)
-|   |       `-- index.js            (Exportador dos componentes de UI)
-|   |
-|   |-- 📂 hooks/
-|   |   `-- useDarkMode.js        (Hook customizado para lógica do modo escuro)
-|   |
-|   |-- 📂 utils/
-|   |   |-- jwtUtils.js           (Funções utilitárias para manipular JWTs)
-|   |   `-- cryptoUtils.js        (Funções de criptografia - Web Crypto API)
-|   |
-|   |-- 📂 constants/
-|   |   `-- index.js              (Constantes globais da aplicação)
-|   |
-|   `-- 📂 docs/
-|       |-- jwtConcepts.js        (Conteúdo de texto/documentação)
-|       |-- appFeatures.js        (Conteúdo de texto/documentação)
-|       `-- projectStory.js       (Conteúdo de texto/documentação)
-|
-|-- index.html                    (Ponto de entrada HTML da aplicação)
-|-- 📄 package.json               (Dependências e scripts do projeto)
-|-- 📄 webpack.config.js          (Configuração do bundler da aplicação)
-|-- 📄 tailwind.config.js          (Configuração do framework CSS)
-|-- 📄 babel.config.js             (Configuração do transpiler de JavaScript)
-`-- ... (Outros arquivos de configuração)
+Para configurar e executar o EncodLab Studio no seu ambiente local:
 
+1. Clone o repositório
 
----
+Abra o seu terminal e execute:
 
-## 🧪 Como Executar Localmente
-
-### 1. Clone o repositório
-
-```bash
 git clone https://github.com/Edison-Vargas/JWT_Studio.git
 cd JWT_Studio
 
 2. Instale as dependências
 
+Navegue até o diretório do projeto e instale as dependências:
+
 npm install
 
 3. Rode em ambiente de desenvolvimento
 
+Inicie o servidor de desenvolvimento:
+
 npm start
-📍 Acesse em: http://localhost:8080
+
+📍 Aceda à aplicação no seu navegador: http://localhost:8080
 
 🚀 Deploy no GitHub Pages
-Deploy manual
-bash
+
+O EncodLab Studio oferece duas formas de deploy para o GitHub Pages:
+
+Deploy Manual
+
+Para realizar um deploy manual:
+
 npm run deploy
-Deploy automático
-O projeto conta com GitHub Actions configurado. Ao fazer push na branch main, o sistema executa o deploy automaticamente para o GitHub Pages.
+
+Este comando irá construir a aplicação e fazer push para a branch gh-pages do seu repositório.
+
+Deploy Automático (GitHub Actions)
+
+O projeto está pré-configurado com GitHub Actions. Isso significa que, ao fazer push para a branch main, o fluxo de trabalho CI/CD será acionado automaticamente, realizando o build e o deploy para o GitHub Pages.
 
 🧠 História do Projeto
-Este projeto nasceu da necessidade de um ambiente claro, educacional e funcional para testar, compreender e manipular tokens JWT — com foco em transparência, performance e uma experiência técnica refinada. Com a evolução do escopo, o projeto passou a incluir também manipulações Base64, se consolidando como um verdadeiro laboratório digital.
+
+O EncodLab Studio nasceu da necessidade premente de um ambiente claro, educacional e funcional para testar, compreender e manipular tokens JWT. O foco inicial era a transparência, a performance e uma experiência técnica refinada. Com a evolução do seu escopo, o projeto expandiu-se para incluir também manipulações Base64, consolidando-se como um verdadeiro laboratório digital multifuncional.
 
 🤝 Contribuições
-Relate bugs ou sugestões abrindo uma issue
 
-Envie Pull Requests com melhorias técnicas, novas funcionalidades ou correções
+As contribuições são sempre bem-vindas! Se encontrou um bug ou tem uma sugestão de melhoria:
 
-Todo tipo de feedback técnico é bem-vindo!
+Abra uma Issue detalhando o problema ou a ideia.
+
+Envie Pull Requests com melhorias técnicas, novas funcionalidades ou correções.
+
+Qualquer tipo de feedback técnico é muito apreciado!
 
 🛡️ Licença
-Este projeto está licenciado sob a licença MIT.
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
 
-© 2025 Edison Vargas Teixeira. Todos os direitos reservados.
+© 2025 Edison Vargas Teixeira. Todos os direitos reservados
