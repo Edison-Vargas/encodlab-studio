@@ -30,10 +30,20 @@ const JwtGenerator = () => {
         }
 
         try {
-            const parsedHeader = parseJSON(JSON.stringify(header)); // Certifica que o header é um objeto
-            const parsedPayload = parseJSON(JSON.stringify(payload)); // Certifica que o payload é um objeto
-            const generatedToken = await sign(parsedHeader, parsedPayload, key, algorithm);
-            setToken(generatedToken);
+            const parsedHeader = parseJSON(JSON.stringify(header));
+            const parsedPayload = parseJSON(JSON.stringify(payload));
+
+            if (!parsedHeader || !parsedPayload) {
+                setError('Header ou Payload JSON inválido.');
+                setIsGenerating(false);
+                return;
+            }
+
+            const encodedHeader = base64urlEncode(JSON.stringify(parsedHeader));
+            const encodedPayload = base64urlEncode(JSON.stringify(parsedPayload));
+            const signature = await sign(parsedHeader, parsedPayload, algorithm, key);
+            const jwt = `${encodedHeader}.${encodedPayload}.${signature}`;
+            setToken(jwt);
         } catch (err) {
             setError(`Erro ao gerar o token: ${err.message}`);
         } finally {

@@ -48,7 +48,7 @@ module.exports = {
             directory: path.join(__dirname, 'dist'), // Onde os arquivos estáticos serão servidos
         },
         compress: true, // Habilita a compressão gzip
-        port: 3000, // Porta do servidor de desenvolvimento
+        port: 3001, // Porta do servidor de desenvolvimento
         open: true, // Abre o navegador automaticamente
         historyApiFallback: true, // Para roteamento de SPA (evita erro 404 em rotas diretas)
     },
