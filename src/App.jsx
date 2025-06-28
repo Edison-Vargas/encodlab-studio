@@ -117,7 +117,7 @@ const App = () => {
             <header className="py-6 bg-white dark:bg-gray-800 shadow-md">
                 <div className="container mx-auto px-4">
                     <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 flex items-center justify-center gap-2">
-                        JWT <span className="text-blue-500">Studio</span>
+                        EncodLab <span className="text-blue-500">Studio</span>
                     </h1>
                 </div>
             </header>
@@ -163,7 +163,7 @@ const App = () => {
             </main>
             
             <footer className="py-4 text-center text-gray-500 dark:text-gray-400">
-                Desenvolvido para fins educacionais e internos © 2025 Edison Vargas Teixeira. Todos os direitos reservados.
+                EncodLab Studio • © 2025 Edison Vargas Teixeira. Projeto criado com propósito educacional, técnico e de uso interno. Todos os direitos reservados.
             </footer>
 
             <Modal show={showModal} onClose={closeModal} title={modalTitle}>

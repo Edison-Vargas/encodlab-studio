@@ -1,95 +1,145 @@
-# JWT & Base64 Playground Aprimorado
+# EncodLab Studio 🧪🔐
 
-Este projeto é uma plataforma interativa e completa para trabalhar com JSON Web Tokens (JWT) e codificação/decodificação Base64. Desenvolvido com **React** e estilizado com **Tailwind CSS**, ele oferece um ambiente intuitivo para desenvolvedores, estudantes e entusiastas de segurança explorarem, validarem e gerarem tokens, além de manipularem dados em Base64.
+[![GitHub Pages](https://img.shields.io/badge/Live_Demo-EncodLab_Studio-blue?style=flat&logo=github)](https://Edison-Vargas.github.io/JWT_Studio/)
 
-## Funcionalidades Principais
+> Laboratório técnico interativo para geração, validação e decodificação de JWTs, além de manipulação Base64. Minimalista, seguro e 100% client-side.
 
-O "JWT & Base64 Playground Aprimorado" é composto por várias ferramentas modulares:
+---
 
-1.  **Decodificador de JWT (JWT Decoder):**
-    * Cole qualquer JWT para decodificar e visualizar seu Header, Payload e Signature.
-    * Exibe o conteúdo em formato JSON legível, com tratamento de erros para tokens inválidos.
-    * *(Nota: A edição direta dos campos decodificados para recriação do token não está ativa no momento, focando na estabilidade do projeto.)*
+## 📌 Sobre o Projeto
 
-2.  **Verificador de Assinatura JWT (Signature Validator):**
-    * Valide a autenticidade de um JWT fornecendo o token e a chave secreta/pública.
-    * Suporta os algoritmos de assinatura `HS256`, `RS256` e `ES256`.
-    * Feedback visual instantâneo sobre a validade da assinatura.
+O **EncodLab Studio** é uma plataforma interativa e modular para desenvolvedores, estudantes e entusiastas de segurança explorarem estruturas de autenticação e codificação, como **JWT** (JSON Web Tokens) e **Base64**. Criada com **React**, empacotada com **Webpack** e hospedada via **GitHub Pages**, a aplicação roda totalmente no navegador — sem backend, sem cookies, com foco total em privacidade e aprendizado técnico.
 
-3.  **Gerador de JWT (JWT Generator):**
-    * Crie novos JWTs personalizados.
-    * Defina o Header e o Payload através de campos de texto editáveis.
-    * Escolha entre os algoritmos `HS256`, `RS256` e `ES256`.
-    * Insira a chave necessária para assinar o token e gere o JWT final.
+---
 
-4.  **Codificador/Decodificador Base64 (Base64 Encoder/Decoder):**
-    * Converta texto em sua representação Base64 e vice-versa.
-    * Ferramenta útil para codificar ou decodificar strings rapidamente, frequentemente usada na estrutura de JWTs e em outras aplicações web.
+## 🔧 Funcionalidades Principais
 
-## Conceitos Abordados
+### 🔓 Decodificador de JWT (JWT Decoder)
+- Cole um JWT e visualize automaticamente seu Header, Payload e Signature.
+- Campos exibidos como JSON formatado.
+- Tratamento de erros para tokens malformados.
 
-* **JSON Web Tokens (JWT):** Estrutura (Header, Payload, Signature), codificação (Base64Url) e algoritmos de assinatura (simétricos e assimétricos).
-* **Codificação Base64:** Explicação do processo de conversão de dados binários em uma representação de texto ASCII.
-* **Segurança Web:** Validação de tokens, integridade de dados e autenticação.
+### 🔐 Verificador de Assinatura JWT (Signature Validator)
+- Valide a autenticidade de tokens com chave secreta ou pública.
+- Compatível com os algoritmos `HS256`, `RS256` e `ES256`.
+- Retorno visual da integridade da assinatura.
 
-## Tecnologias Utilizadas
+### 🛠️ Gerador de JWT (JWT Generator)
+- Edite livremente Header e Payload.
+- Escolha o algoritmo de assinatura.
+- Insira a chave e gere seu token em tempo real.
 
-* **React:** Biblioteca JavaScript para construção de interfaces de usuário.
-* **Tailwind CSS:** Framework CSS para estilização rápida e responsiva.
-* **JavaScript (ES6+):** Linguagem de programação principal.
-* **Babel Standalone:** Usado para transpilação de JSX e ES6+ no navegador.
+### 🔁 Codificador/Decodificador Base64 (Base64 Encoder/Decoder)
+- Converta textos simples em Base64 e vice-versa.
+- Útil para análise e manipulação de strings em formato seguro.
 
-## Como Executar o Projeto Localmente
+---
 
-1.  **Clone o repositório:**
-    ```bash
-    git clone [URL_DO_SEU_REPOSITORIO]
-    cd [Nome_da_Pasta_do_Projeto]
-    ```
-2.  **Inicie um Servidor Web Local:**
-    Como este projeto utiliza múltiplos arquivos JavaScript/JSX (`.jsx`, `.js`) que são importados dinamicamente no seu `Projeto_JWT.html` (com `type="module"` ou com Babel Standalone tratando as importações como módulos), e devido às restrições de segurança do navegador (CORS) para carregamento de módulos locais via protocolo `file:///`, **você precisará de um servidor web local para executá-lo corretamente.**
+## 📘 Conceitos Abordados
 
-    **Opções para iniciar um servidor local:**
+- **JSON Web Tokens (JWT):** Estrutura padronizada com Header, Payload e Signature.
+- **Codificação Base64/Base64URL:** Conversão de dados binários em texto ASCII seguro.
+- **Assinatura Digital no Navegador:** Uso da Web Crypto API para assinar e validar tokens.
+- **Algoritmos criptográficos:** HMAC (HS256), RSA (RS256) e ECDSA (ES256).
+- **Boas práticas de segurança e compatibilidade web.**
 
-    * **Usando `live-server` (recomendado para desenvolvimento):**
-        Se você tem Node.js instalado, pode instalar `live-server` globalmente:
-        ```bash
-        npm install -g live-server
-        ```
-        Depois, navegue até a pasta do seu projeto no terminal e execute:
-        ```bash
-        live-server
-        ```
-        Isso abrirá automaticamente o projeto no seu navegador.
+---
 
-    * **Usando o módulo HTTP do Python:**
-        Se você tem Python instalado (geralmente já vem com macOS/Linux, e pode ser instalado no Windows):
-        Navegue até a pasta do seu projeto no terminal e execute:
-        ```bash
-        python -m http.server 8000
-        # Ou python3 -m http.server 8000 se você tiver Python 3
-        ```
-        Em seguida, abra seu navegador e vá para `http://localhost:8000/Projeto_JWT.html`.
+## 🚀 Tecnologias Utilizadas
 
-    * **Usando `http-server` (se já tem Node.js):**
-        Instale `http-server` globalmente:
-        ```bash
-        npm install -g http-server
-        ```
-        Navegue até a pasta do seu projeto no terminal e execute:
-        ```bash
-        http-server -p 8000
-        ```
-        Em seguida, abra seu navegador e vá para `http://localhost:8000/Projeto_JWT.html`.
+- 🧠 **React:** Biblioteca JavaScript moderna e reativa.
+- 🧰 **Webpack:** Empacotador de módulos e assets.
+- 💻 **JavaScript (ES6+):** Programação moderna e modular.
+- 🕸️ **Web Crypto API:** Assinaturas digitais seguras no lado do cliente.
+- 🎨 **Estilização utilitária:** Tema escuro com fontes técnicas e responsividade.
+- 🌐 **GitHub Pages:** Deploy estático gratuito com CI/CD automatizado.
 
-    Escolha uma das opções acima para iniciar um servidor local e acesse o `Projeto_JWT.html` através do endereço fornecido (ex: `http://localhost:8000/Projeto_JWT.html`).
+---
 
-## Contribuição
+## 📁 Estrutura de Pastas (Essencial)
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues para bugs ou sugestões de novas funcionalidades.
+/ (Raiz do Projeto)
+|
+|-- 📂 src/
+|   |
+|   |-- 📄 index.js             (Ponto de entrada do React, renderiza o App)
+|   |-- 📄 App.jsx               (Componente principal, orquestra a aplicação)
+|   |
+|   |-- 📂 assets/
+|   |   |-- styles.css          (Estilos globais da aplicação)
+|   |
+|   |-- 📂 components/
+|   |   |
+|   |   |-- 📄 JwtDecoder.jsx         (Componente: Decodificador de JWT)
+|   |   |-- 📄 JwtGenerator.jsx        (Componente: Gerador de JWT)
+|   |   |-- 📄 SignatureValidator.jsx (Componente: Validador de Assinatura)
+|   |   |-- 📄 Base64Converter.jsx     (Componente: Ferramenta de conversão)
+|   |   |-- 📄 ToggleDarkMode.jsx    (Componente: Botão de modo escuro)
+|   |   |
+|   |   `-- 📂 ui/
+|   |       |-- Modal.jsx             (Componente de UI reutilizável: Modal)
+|   |       `-- index.js            (Exportador dos componentes de UI)
+|   |
+|   |-- 📂 hooks/
+|   |   `-- useDarkMode.js        (Hook customizado para lógica do modo escuro)
+|   |
+|   |-- 📂 utils/
+|   |   |-- jwtUtils.js           (Funções utilitárias para manipular JWTs)
+|   |   `-- cryptoUtils.js        (Funções de criptografia - Web Crypto API)
+|   |
+|   |-- 📂 constants/
+|   |   `-- index.js              (Constantes globais da aplicação)
+|   |
+|   `-- 📂 docs/
+|       |-- jwtConcepts.js        (Conteúdo de texto/documentação)
+|       |-- appFeatures.js        (Conteúdo de texto/documentação)
+|       `-- projectStory.js       (Conteúdo de texto/documentação)
+|
+|-- index.html                    (Ponto de entrada HTML da aplicação)
+|-- 📄 package.json               (Dependências e scripts do projeto)
+|-- 📄 webpack.config.js          (Configuração do bundler da aplicação)
+|-- 📄 tailwind.config.js          (Configuração do framework CSS)
+|-- 📄 babel.config.js             (Configuração do transpiler de JavaScript)
+`-- ... (Outros arquivos de configuração)
 
-## Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes. ---
+---
+
+## 🧪 Como Executar Localmente
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/Edison-Vargas/JWT_Studio.git
+cd JWT_Studio
+
+2. Instale as dependências
+
+npm install
+
+3. Rode em ambiente de desenvolvimento
+
+npm start
+📍 Acesse em: http://localhost:8080
+
+🚀 Deploy no GitHub Pages
+Deploy manual
+bash
+npm run deploy
+Deploy automático
+O projeto conta com GitHub Actions configurado. Ao fazer push na branch main, o sistema executa o deploy automaticamente para o GitHub Pages.
+
+🧠 História do Projeto
+Este projeto nasceu da necessidade de um ambiente claro, educacional e funcional para testar, compreender e manipular tokens JWT — com foco em transparência, performance e uma experiência técnica refinada. Com a evolução do escopo, o projeto passou a incluir também manipulações Base64, se consolidando como um verdadeiro laboratório digital.
+
+🤝 Contribuições
+Relate bugs ou sugestões abrindo uma issue
+
+Envie Pull Requests com melhorias técnicas, novas funcionalidades ou correções
+
+Todo tipo de feedback técnico é bem-vindo!
+
+🛡️ Licença
+Este projeto está licenciado sob a licença MIT.
 
 © 2025 Edison Vargas Teixeira. Todos os direitos reservados.

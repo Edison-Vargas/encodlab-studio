@@ -7,7 +7,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'), // Onde os arquivos compilados serão colocados
         filename: 'bundle.js', // Nome do arquivo de saída
-        publicPath: '/', // Necessário para o react-router-dom e devServer
+        publicPath: './', // Necessário para o react-router-dom e devServer
         clean: true, // Limpa o diretório 'dist' antes de cada build
     },
     module: {
@@ -39,7 +39,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './public/index.html', // Caminho para seu arquivo HTML de template
+            template: './index.html', // Caminho para seu arquivo HTML de template
             filename: 'index.html', // Nome do arquivo HTML de saída
         }),
     ],
