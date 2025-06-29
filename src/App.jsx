@@ -61,6 +61,8 @@ const App = () => {
         setModalContent(null);
     };
 
+    console.log("🔍 App.jsx renderizou");
+
     return (
         <div className={`min-h-screen bg-gray-100 text-gray-900 ${darkMode ? 'dark' : ''}`}>
             {/* Contêiner para os botões de controle e menu sanduíche */}
