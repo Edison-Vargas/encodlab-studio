@@ -15,16 +15,23 @@ const useDarkMode = () => {
     }
   });
 
+  // Depois de definir o estado inicial
+console.log("[useDarkMode] Estado inicial:", darkMode);
+
   // Efeito para aplicar a classe 'dark' ao body e salvar no localStorage
   useEffect(() => {
+    console.log("[useDarkMode] Modo atual:", darkMode);
+
     const root = window.document.documentElement; // html element
     const body = window.document.body; // body element
 
     if (darkMode) {
+      console.log("[useDarkMode] Ativando dark mode");
       root.classList.add('dark');
       body.classList.add('dark'); // Tailwind pode usar 'html.dark' ou 'body.dark'
       localStorage.setItem('theme', 'dark');
     } else {
+      console.log("[useDarkMode] Desativando dark mode");
       root.classList.remove('dark');
       body.classList.remove('dark');
       localStorage.setItem('theme', 'light');

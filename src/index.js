@@ -17,6 +17,8 @@ import './assets/styles.css'; // Importa seu CSS com Tailwind
 //     });
 // }
 
+console.log("[index.js] Iniciando montagem do React");
+
 // Renderiza o componente principal da aplicação
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,3 +26,5 @@ root.render(
         <App />
     </React.StrictMode>
 );
+
+console.log("[index.js] Chamado root.render()");

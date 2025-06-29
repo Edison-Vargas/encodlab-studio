@@ -12,6 +12,8 @@ import { jwtConceptsContent } from './docs/jwtConcepts';
 import { appFeaturesContent } from './docs/appFeatures';
 import { projectStoryContent } from './docs/projectStory';
 
+console.log("[App] Renderizando App.jsx");
+
 // Ícone do menu sanduíche (hamburger)
 const MenuIcon = ({ className }) => (
     <svg
@@ -40,6 +42,8 @@ const CloseIcon = ({ className }) => (
     </svg>
 );
 
+console.log('✅ App.jsx iniciou');
+
 const App = () => {
     const [darkMode, setDarkMode] = useDarkMode();
     const [showModal, setShowModal] = React.useState(false);
@@ -47,6 +51,10 @@ const App = () => {
     const [modalContent, setModalContent] = React.useState(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
     const [currentTool, setCurrentTool] = React.useState('jwt'); // Novo estado para a ferramenta ativa
+
+    React.useEffect(() => {
+        console.log('[App] useEffect executado após montagem do App');
+    }, []);
 
     const openModal = (title, content) => {
         setModalTitle(title);
