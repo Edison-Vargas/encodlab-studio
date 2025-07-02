@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Seus estilos personalizados abaixo */
+body {
+    font-family: 'Inter', sans-serif; /* Usando Inter como fonte padrão */
+}
+/* Ajustes para o modo escuro do Tailwind (estas classes são aplicadas via JS no App.jsx) */
+.dark .bg-gray-100 { background-color: #1a202c; } /* dark:bg-gray-900 */
+.dark .text-gray-900 { color: #e2e8f0; } /* dark:text-gray-100 */
+.dark .bg-white { background-color: #2d3748; } /* dark:bg-gray-800 */
+.dark .text-gray-800 { color: #cbd5e0; } /* dark:text-gray-200 */
+.dark .bg-gray-300 { background-color: #4a5568; } /* dark:bg-gray-700 */
+.dark .text-gray-700 { color: #a0aec0; } /* dark:text-gray-300 */
+.dark pre { /* Estilo para o <pre> para ficar visível em dark mode */
+    background-color: #1a202c; /* dark:bg-gray-900 para pre */
+    color: #a0aec0; /* dark:text-gray-300 para pre */
+}
