@@ -1,6 +1,6 @@
 # EncodLab Studio 🧪🔐
 
-[![GitHub Pages](https://img.shields.io/badge/Live_Demo-EncodLab_Studio-blue?style=flat&logo=github)](https://Edison-Vargas.github.io/JWT_Studio/)
+[![GitHub Pages](https://img.shields.io/badge/Live_Demo-EncodLab_Studio-blue?style=flat&logo=github)](https://Edison-Vargas.github.io/encodlab-studio/)
 
 > Laboratório técnico interativo para geração, validação e decodificação de JWTs, além de manipulação Base64. Minimalista, seguro e 100% client-side.
 
@@ -8,57 +8,75 @@
 
 ## 🚀 Sobre o Projeto
 
-O EncodLab Studio é uma plataforma web inovadora, desenhada para desenvolvedores, estudantes e entusiastas de segurança que desejam aprofundar os seus conhecimentos em estruturas de autenticação e codificação, como JWT (JSON Web Tokens) e Base64.
+O **EncodLab Studio** é uma plataforma web inovadora, desenhada para desenvolvedores, estudantes e entusiastas de segurança que desejam aprofundar seus conhecimentos em estruturas de autenticação e codificação, como JWT (JSON Web Tokens) e Base64.
 
-Desenvolvida com React, otimizada com Webpack e alojada de forma eficiente via GitHub Pages, esta aplicação corre integralmente no navegador. A sua arquitetura client-side garante privacidade total, eliminando a necessidade de backends ou o uso de cookies, focando numa experiência técnica refinada e segura.
+Desenvolvida com React, otimizada com Webpack e hospedada via GitHub Pages, a aplicação roda inteiramente no navegador. Sua arquitetura client-side garante privacidade total, eliminando a necessidade de servidores, cookies ou persistência externa — focando numa experiência técnica refinada e segura.
 
 ---
 
 ## 🔧 Funcionalidades Principais
 
-### 🔓 Decodificador de JWT (JWT Decoder)
+### 🔓 Decodificador de JWT
 - Cole um JWT e visualize automaticamente seu Header, Payload e Signature.
-- Campos exibidos como JSON formatado.
-- Tratamento de erros para tokens malformados.
+- Os campos são exibidos em formato JSON legível com botão de cópia.
+- Validação e tratamento de erros para tokens malformados.
 
-### 🔐 Verificador de Assinatura JWT (Signature Validator)
-- Valide a autenticidade de tokens com chave secreta ou pública.
+### 🔐 Verificador de Assinatura
+- Valide a integridade de tokens usando chaves simétricas ou assimétricas.
 - Compatível com os algoritmos `HS256`, `RS256` e `ES256`.
-- Retorno visual da integridade da assinatura.
+- Retorno visual imediato informando se a assinatura é válida.
 
-### 🛠️ Gerador de JWT (JWT Generator)
-- Edite livremente Header e Payload.
-- Escolha o algoritmo de assinatura.
-- Insira a chave e gere seu token em tempo real.
+### 🛠️ Gerador de JWT
+- Edite Header e Payload livremente em formato JSON.
+- Escolha o algoritmo de assinatura e forneça a chave apropriada.
+- O token gerado pode ser copiado com um clique.
 
-### 🔁 Codificador/Decodificador Base64 (Base64 Encoder/Decoder)
-- Converta textos simples em Base64 e vice-versa.
-- Útil para análise e manipulação de strings em formato seguro.
+### 🔁 Codificador/Decodificador Base64
+- Encode/decode de strings no formato Base64/Base64Url.
+- Resultado editável com suporte visual a erros e botão de cópia.
 
 ---
 
 ## 📘 Conceitos Abordados
 
-- **JSON Web Tokens (JWT):** Estrutura padronizada com Header, Payload e Signature.
-- **Codificação Base64/Base64URL:** Conversão de dados binários em texto ASCII seguro.
-- **Assinatura Digital no Navegador:** Uso da Web Crypto API para assinar e validar tokens.
-- **Algoritmos criptográficos:** HMAC (HS256), RSA (RS256) e ECDSA (ES256).
-- **Boas práticas de segurança e compatibilidade web.**
+- **JSON Web Tokens (JWT):** Estrutura com Header, Payload e Signature.
+- **Base64 & Base64Url:** Conversão de dados binários em strings ASCII seguras.
+- **Web Crypto API:** Assinatura e verificação de dados no próprio navegador.
+- **Algoritmos criptográficos:** Suporte a HS256 (HMAC), RS256 (RSA), ES256 (ECDSA).
+- **Segurança e boas práticas:** Codificação segura, sem backends, sem rastreamento.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## 🧪 Desafios Técnicos Superados
 
-- 🧠 **React:** Biblioteca JavaScript moderna e reativa.
-- 🧰 **Webpack:** Empacotador de módulos e assets.
-- 💻 **JavaScript (ES6+):** Programação moderna e modular.
-- 🕸️ **Web Crypto API:** Assinaturas digitais seguras no lado do cliente.
-- 🎨 **Estilização utilitária:** Tema escuro com fontes técnicas e responsividade.
-- 🌐 **GitHub Pages:** Deploy estático gratuito com CI/CD automatizado.
+Durante a construção do projeto, diversos desafios reais foram enfrentados:
+
+1. **Web Crypto API:** manipulação precisa de chaves, buffers e assinatura assíncrona.
+2. **Base64 vs Base64Url:** padronização e consistência na codificação.
+3. **Parsing seguro de JSON:** proteção contra quebras causadas por entradas inválidas.
+4. **Arquitetura modular:** separação clara entre lógica, componentes e conteúdos educacionais.
+5. **Persistência de tema:** sincronização de preferências com `localStorage`.
+6. **SPA com deploy estático:** ajustes em Webpack e GitHub Pages para navegação fluida.
+7. **Componentização reutilizável:** `Alert`, `Textarea`, `Modal`, `CopiarConteúdo`, entre outros.
+8. **Feedback visual e acessibilidade:** UX aprimorada com feedbacks claros e interações suaves.
+9. **Estados sincronizados:** sincronismo entre input/output com `useEffect` e `useCallback`.
+10. **Complexidade interna simplificada:** encapsulamento de lógicas criptográficas para o usuário.
+11. **Documentação integrada:** conteúdos JSX técnicos para fins educacionais via modais e docs.
 
 ---
 
-⚙️ Como Executar Localmente
+## 🧰 Tecnologias Utilizadas
+
+- 🧠 **React** — Biblioteca declarativa e reativa para a interface.
+- ⚙️ **Webpack** — Pipeline de build moderno e personalizável.
+- 💡 **JavaScript ES6+** — Padrão moderno com sintaxe funcional.
+- 🔐 **Web Crypto API** — Assinatura segura client-side.
+- 🎨 **Tailwind CSS** — Design utilitário com responsividade e temas claro/escuro.
+- 🚀 **GitHub Pages** — Deploy gratuito e automatizado via Actions.
+
+---
+
+## 🛠️ Como Rodar Localmente
 
 Para configurar e executar o EncodLab Studio no seu ambiente local:
 
@@ -101,7 +119,7 @@ O projeto está pré-configurado com GitHub Actions. Isso significa que, ao faze
 
 🧠 História do Projeto
 
-O EncodLab Studio nasceu da necessidade premente de um ambiente claro, educacional e funcional para testar, compreender e manipular tokens JWT. O foco inicial era a transparência, a performance e uma experiência técnica refinada. Com a evolução do seu escopo, o projeto expandiu-se para incluir também manipulações Base64, consolidando-se como um verdadeiro laboratório digital multifuncional.
+O EncodLab Studio nasceu da vontade de unir teoria, segurança digital e visualização prática. Seu propósito inicial era desmistificar a estrutura dos tokens JWT, evoluindo para um ambiente interativo completo para experimentação de codificação, assinatura e validação. Hoje, o projeto é um laboratório digital que estimula o aprendizado técnico com clareza e propósito.
 
 🤝 Contribuições
 

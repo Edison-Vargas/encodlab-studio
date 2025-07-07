@@ -10,6 +10,7 @@ module.exports = {
             fontFamily: {
                 'body': ['"Open Sans"', 'sans-serif'],   // Fonte para o corpo do texto (usando aspas duplas pois o nome tem espaço)
                 'heading': ['Roboto', 'sans-serif'],     // Fonte para títulos
+                poppins: ['Poppins', 'sans-serif'],      // Outra fonte
             },
             keyframes: {
                 'slide-in': {

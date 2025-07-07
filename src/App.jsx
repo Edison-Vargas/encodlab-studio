@@ -126,8 +126,8 @@ const App = () => {
 
             <header className="py-6 bg-white dark:bg-gray-800 shadow-md">
                 <div className="container mx-auto px-4">
-                    <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200 flex items-center justify-center gap-2">
-                        EncodLab <span className="text-blue-500">Studio</span>
+                    <h1 className="text-5xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-200 to-blue-800 text-transparent bg-clip-text drop-shadow-lg">
+                        EncodLab <span className="text-5xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 to-blue-800 text-transparent bg-clip-text drop-shadow-lg">Studio</span>
                     </h1>
                 </div>
             </header>
