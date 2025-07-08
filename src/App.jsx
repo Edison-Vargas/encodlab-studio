@@ -173,7 +173,7 @@ const App = () => {
             </main>
             
             <footer className="py-4 text-center text-gray-500 dark:text-gray-400">
-                EncodLab Studio • © 2025 Edison Vargas Teixeira. Projeto criado com propósito educacional, técnico e de uso interno. Todos os direitos reservados.
+                EncodLab Studio © 2025 Edison Vargas Teixeira. Projeto criado com propósito educacional, técnico e de uso interno. Todos os direitos reservados.
             </footer>
 
             <Modal show={showModal} onClose={closeModal} title={modalTitle}>
