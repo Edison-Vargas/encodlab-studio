@@ -1,9 +1,25 @@
+/**
+ * Hook: useDarkMode
+ *
+ * Gerencia o tema visual da aplicação (dark/light mode) de forma:
+ * - Persistente via localStorage
+ * - Inteligente ao ler preferências do sistema
+ * - Reativa, permitindo alteração pelo usuário
+ *
+ * Retorna: [modoAtual: boolean, setModo: function]
+ */
+
 import { useState, useEffect } from 'react';
 
 const useDarkMode = () => {
-  // Inicializa o estado com base no localStorage ou preferência do sistema
+  /**
+   * Estado inicial definido via função para evitar reexecução
+   * Tenta obter o valor salvo no localStorage (se houver)
+   * Caso contrário, verifica a preferência do sistema via matchMedia
+   */
   const [darkMode, setDarkMode] = useState(() => {
     try {
+      // Lê o valor salvo no localStorage (se houver)
       const storedTheme = localStorage.getItem('theme');
       if (storedTheme) {
         return storedTheme === 'dark';
@@ -14,9 +30,6 @@ const useDarkMode = () => {
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
   });
-
-  // Depois de definir o estado inicial
-console.log("[useDarkMode] Estado inicial:", darkMode);
 
   // Efeito para aplicar a classe 'dark' ao body e salvar no localStorage
   useEffect(() => {
@@ -38,6 +51,7 @@ console.log("[useDarkMode] Estado inicial:", darkMode);
     }
   }, [darkMode]);
 
+  // Hook retorna o estado atual e sua função atualizadora
   return [darkMode, setDarkMode];
 };
 
