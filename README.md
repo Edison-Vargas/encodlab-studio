@@ -68,7 +68,7 @@ Durante a construção do projeto, diversos desafios reais foram enfrentados:
 ## 🧰 Tecnologias Utilizadas
 
 - 🧠 **React** — Biblioteca declarativa e reativa para a interface.
-- ⚙️ **Webpack** — Pipeline de build moderno e personalizável.
+- ⚙️ **Webpack** — Pipeline de build moderno e personalizável. Documentação de apoio: (https://webpack.js.org/guides/public-path/)
 - 💡 **JavaScript ES6+** — Padrão moderno com sintaxe funcional.
 - 🔐 **Web Crypto API** — Assinatura segura client-side.
 - 🎨 **Tailwind CSS** — Design utilitário com responsividade e temas claro/escuro.
