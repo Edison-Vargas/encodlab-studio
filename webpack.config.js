@@ -34,7 +34,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'), // Pasta absoluta onde o bundle (arquivo compilado) será emitido (ex: /projeto/dist)
         filename: 'bundle.js', // Nome do arquivo JavaScript final
         // Base path usado internamente pelo devServer e para roteamento
-        publicPath: '/encodlab-studio/', // Necessário para o react-router-dom e devServer 
+        publicPath: './', // Necessário para o react-router-dom e devServer 
         clean: true, // Garante que a pasta 'dist' seja limpa antes de cada build
     },
 
