@@ -1,4 +1,14 @@
-// src/components/JwtDecoder.jsx
+/**
+ * Componente: JwtDecoder
+ *
+ * Responsável por decodificar tokens JWT em suas três partes:
+ * - Header (metadados como algoritmo e tipo)
+ * - Payload (conteúdo, claims)
+ * - Signature (assinatura criptográfica)
+ *
+ * Utiliza destaque de sintaxe, suporte a tema escuro, exibição condicional,
+ * tratamento de erros e botão para copiar conteúdo.
+ */
 
 import React from 'react';
 import CopiarConteúdo from './ui/CopiarConteúdo';
