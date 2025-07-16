@@ -103,7 +103,7 @@ const App = () => {
                 {/* Botão para alternância de modo visual */}
                 <Button
                     onClick={() => setDarkMode(!darkMode)}
-                    className="p-2 bg-gray-300 dark:bg-gray-700 rounded-md shadow-md text-gray-800 dark:text-gray-200"
+                    className="hidden md: block p-2 bg-gray-300 dark:bg-gray-700 rounded-md shadow-md text-gray-800 dark:text-gray-200"
                 >
                     {darkMode ? 'Light Mode' : 'Dark Mode'}
                 </Button>
@@ -146,14 +146,20 @@ const App = () => {
                     >
                         Sobre
                     </Button>
+                    <Button
+                    onClick={() => setDarkMode(!darkMode)}
+                    className="p-2 bg-gray-300 dark:bg-gray-700 rounded-md shadow-md text-gray-800 dark:text-gray-200"
+                >
+                    {darkMode ? 'Light Mode' : 'Dark Mode'}
+                    </Button>
                 </div>
             </div>
 
             {/* Cabeçalho com nome estilizado do projeto */}
             <header className="py-6 bg-white dark:bg-gray-800 shadow-md">
                 <div className="container mx-auto px-4">
-                    <h1 className="text-5xl :text-4xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-200 to-blue-800 text-transparent bg-clip-text drop-shadow-lg">
-                        EncodLab <span className="text-5xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 to-blue-800 text-transparent bg-clip-text drop-shadow-lg">Studio</span>
+                    <h1 className="text-4xl :text-4xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-200 to-blue-800 text-transparent bg-clip-text drop-shadow-lg">
+                        EncodLab <span className="text-4xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 to-blue-800 text-transparent bg-clip-text drop-shadow-lg">Studio</span>
                     </h1>
                 </div>
             </header>
