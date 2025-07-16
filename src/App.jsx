@@ -1,20 +1,37 @@
+/**
+ * App.jsx
+ *
+ * Componente raiz da aplicação EncodLab Studio.
+ * Responsável por renderizar:
+ * - Ferramentas JWT (decoder, validator, generator)
+ * - Conversor Base64
+ * - Interface de troca de tema (light/dark)
+ * - Modais explicativos sobre o projeto
+ * - Menu responsivo adaptado para mobile/desktop
+ */
+
 import React from 'react';
+
+// Importa os blocos funcionais
 import JwtDecoder from './components/JwtDecoder';
 import SignatureValidator from './components/SignatureValidator';
 import JwtGenerator from './components/JwtGenerator';
-import Base64Converter from './components/Base64Converter'; // Importe o novo componente
-import { Button } from './components/ui';
-import useDarkMode from './hooks/useDarkMode';
-import Modal from './components/Modal';
+import Base64Converter from './components/Base64Converter'; 
 
-// Importe os conteúdos da documentação
+// Botão estilizado e utilitários
+import { Button } from './components/ui';
+import useDarkMode from './hooks/useDarkMode'; // Hook customizado para persistência de tema
+import Modal from './components/Modal'; // Modal reutilizável para exibir conteúdo da documentação
+
+// Textos explicativos carregados de arquivos separados
 import { jwtConceptsContent } from './docs/jwtConcepts';
 import { appFeaturesContent } from './docs/appFeatures';
 import { projectStoryContent } from './docs/projectStory';
 
-console.log("[App] Renderizando App.jsx");
-
-// Ícone do menu sanduíche (hamburger)
+/**
+ * Ícones de menu (hamburger e fechar)
+ * SVGs usados para interface mobile responsiva
+ */
 const MenuIcon = ({ className }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +45,6 @@ const MenuIcon = ({ className }) => (
     </svg>
 );
 
-// Ícone de fechar (X) para o menu
 const CloseIcon = ({ className }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -42,25 +58,33 @@ const CloseIcon = ({ className }) => (
     </svg>
 );
 
-console.log('✅ App.jsx iniciou');
 
 const App = () => {
+    // Gerencia tema escuro/claro com persistência
     const [darkMode, setDarkMode] = useDarkMode();
+
+    // Gerencia visibilidade do modal e seu conteúdo
     const [showModal, setShowModal] = React.useState(false);
     const [modalTitle, setModalTitle] = React.useState('');
     const [modalContent, setModalContent] = React.useState(null);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-    const [currentTool, setCurrentTool] = React.useState('jwt'); // Novo estado para a ferramenta ativa
 
+    // Controle do menu sanduíche para mobile
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
+    // Define qual ferramenta está ativa no momento
+    const [currentTool, setCurrentTool] = React.useState('jwt');
+
+    // Executa efeitos após montagem inicial (debug/logs)
     React.useEffect(() => {
         console.log('[App] useEffect executado após montagem do App');
     }, []);
 
+    // Abre um modal com conteúdo específico
     const openModal = (title, content) => {
         setModalTitle(title);
         setModalContent(content);
         setShowModal(true);
-        setIsMobileMenuOpen(false); // Fecha o menu mobile ao abrir um modal
+        setIsMobileMenuOpen(false); // Fecha o menu se for mobile
     };
 
     const closeModal = () => {
@@ -73,9 +97,10 @@ const App = () => {
 
     return (
         <div className={`min-h-screen bg-gray-100 text-gray-900 ${darkMode ? 'dark' : ''}`}>
-            {/* Contêiner para os botões de controle e menu sanduíche */}
-            <div className="fixed top-4 right-4 z-20 flex gap-2"> {/* Agrupa o botão de tema e o toggle do menu */}
-                {/* Botão de tema sempre visível */}
+
+            {/* Topbar com tema e menu responsivo */}
+            <div className="fixed top-4 right-4 z-20 flex gap-2">
+                {/* Botão para alternância de modo visual */}
                 <Button
                     onClick={() => setDarkMode(!darkMode)}
                     className="p-2 bg-gray-300 dark:bg-gray-700 rounded-md shadow-md text-gray-800 dark:text-gray-200"
@@ -95,7 +120,7 @@ const App = () => {
                     )}
                 </Button>
 
-                {/* Menu de documentação - visível em telas grandes, ou quando mobileMenuOpen for true */}
+                {/* Menu de acesso à documentação - visível em telas grandes, ou quando mobileMenuOpen for true */}
                 <div
                     className={`${
                         isMobileMenuOpen ? 'block' : 'hidden' // Esconde por padrão, mostra se o menu está aberto
@@ -124,15 +149,16 @@ const App = () => {
                 </div>
             </div>
 
+            {/* Cabeçalho com nome estilizado do projeto */}
             <header className="py-6 bg-white dark:bg-gray-800 shadow-md">
                 <div className="container mx-auto px-4">
-                    <h1 className="text-5xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-200 to-blue-800 text-transparent bg-clip-text drop-shadow-lg">
+                    <h1 className="text-5xl :text-4xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-200 to-blue-800 text-transparent bg-clip-text drop-shadow-lg">
                         EncodLab <span className="text-5xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 to-blue-800 text-transparent bg-clip-text drop-shadow-lg">Studio</span>
                     </h1>
                 </div>
             </header>
 
-            {/* Menu de seleção de ferramenta (novo) */}
+            {/* Botões para selecionar a ferramenta ativa */}
             <nav className="bg-gray-200 dark:bg-gray-700 py-2 shadow-sm">
                 <div className="container mx-auto px-4 flex justify-center gap-4">
                     <Button
@@ -158,6 +184,7 @@ const App = () => {
                 </div>
             </nav>
 
+            {/* Área principal com ferramentas */}
             <main className="container mx-auto py-8 px-4">
                 {/* Renderização condicional das ferramentas */}
                 {currentTool === 'jwt' && (
@@ -172,10 +199,12 @@ const App = () => {
                 )}
             </main>
             
+            {/* Rodapé institucional */}
             <footer className="py-4 text-center text-gray-500 dark:text-gray-400">
                 EncodLab Studio © 2025 Edison Vargas Teixeira. Projeto criado com propósito educacional, técnico e de uso interno. Todos os direitos reservados.
             </footer>
 
+            {/* Modal reutilizável para textos explicativos */}
             <Modal show={showModal} onClose={closeModal} title={modalTitle}>
                 {modalContent}
             </Modal>
