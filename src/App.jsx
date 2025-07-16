@@ -124,7 +124,7 @@ const App = () => {
                 <div
                     className={`${
                         isMobileMenuOpen ? 'block' : 'hidden' // Esconde por padrão, mostra se o menu está aberto
-                    } md:flex flex-col md:flex-row gap-2 mt-2 md:mt-0 
+                    } md:flex grid grid-cols-1 gap-2 mt-2 md:mt-0 
                     absolute md:static top-full right-0 bg-white dark:bg-gray-800 md:bg-transparent md:dark:bg-transparent
                     p-4 md:p-0 rounded-md shadow-lg md:shadow-none w-48 md:w-auto`}
                 >
@@ -148,7 +148,7 @@ const App = () => {
                     </Button>
                     <Button
                     onClick={() => setDarkMode(!darkMode)}
-                    className="p-2 bg-gray-300 dark:bg-gray-700 rounded-md shadow-md text-gray-800 dark:text-gray-200"
+                    className="w-full text-centerp-2 bg-gray-300 dark:bg-gray-700 rounded-md shadow-md text-gray-800 dark:text-gray-200"
                 >
                     {darkMode ? 'Light Mode' : 'Dark Mode'}
                     </Button>
